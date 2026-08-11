@@ -3,7 +3,8 @@
  * Handles communication with the backend with automatic Clerk token injection.
  */
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+const rawApiBase = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+const API_BASE = rawApiBase.endsWith('/') ? rawApiBase.slice(0, -1) : rawApiBase;
 
 /**
  * Helper to perform authenticated fetch requests
